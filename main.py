@@ -7,6 +7,7 @@ from config import get_config
 
 def main():
     config = get_config()
+    print(f"Using device: {config.device}")
 
     adata = load_data(config.data_path)
     train_dataset, valid_dataset, x_dim, c_dim = prepare_datasets(
