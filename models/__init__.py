@@ -1,3 +1,3 @@
 from .cvae import cVAE
 
-__all__ = ['cVAE']
+__all__ = ["cVAE"]

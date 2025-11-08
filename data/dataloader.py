@@ -8,16 +8,16 @@ def load_data(data_path):
     return sc.read_h5ad(data_path)
 
 
-def prepare_datasets(adata, train_split='train', valid_split='valid'):
-    train_mask = adata.obs['split'] == train_split
-    valid_mask = adata.obs['split'] == valid_split
+def prepare_datasets(adata, train_split="train", valid_split="valid"):
+    train_mask = adata.obs["split"] == train_split
+    valid_mask = adata.obs["split"] == valid_split
 
     X_train = adata.X[train_mask].A if hasattr(adata.X, "A") else adata.X[train_mask]
     X_valid = adata.X[valid_mask].A if hasattr(adata.X, "A") else adata.X[valid_mask]
 
-    drug_dict = adata.uns['drug_embeddings']
-    C_train = np.stack([drug_dict[d] for d in adata.obs.loc[train_mask, 'drug_name']])
-    C_valid = np.stack([drug_dict[d] for d in adata.obs.loc[valid_mask, 'drug_name']])
+    drug_dict = adata.uns["drug_embeddings"]
+    C_train = np.stack([drug_dict[d] for d in adata.obs.loc[train_mask, "drug_name"]])
+    C_valid = np.stack([drug_dict[d] for d in adata.obs.loc[valid_mask, "drug_name"]])
 
     X_train_t = torch.tensor(X_train, dtype=torch.float32)
     C_train_t = torch.tensor(C_train, dtype=torch.float32)

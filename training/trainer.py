@@ -4,7 +4,7 @@ from tqdm.auto import tqdm
 
 
 class Trainer:
-    def __init__(self, model, device='cuda', lr=1e-4):
+    def __init__(self, model, device="cuda", lr=1e-4):
         self.model = model.to(device)
         self.device = device
         self.optimizer = torch.optim.Adam(model.parameters(), lr=lr)
@@ -64,7 +64,9 @@ class Trainer:
             valid_loss = self.validate_epoch(valid_loader, epoch, n_epochs)
             self.valid_losses.append(valid_loss)
 
-            tqdm.write(f"Epoch {epoch:03d}: Train = {train_loss:.4f}, Val = {valid_loss:.4f}")
+            tqdm.write(
+                f"Epoch {epoch:03d}: Train = {train_loss:.4f}, Val = {valid_loss:.4f}"
+            )
 
         return self.train_losses, self.valid_losses
 

@@ -10,9 +10,7 @@ def main():
 
     adata = load_data(config.data_path)
     train_dataset, valid_dataset, x_dim, c_dim = prepare_datasets(
-        adata,
-        train_split=config.train_split,
-        valid_split=config.valid_split
+        adata, train_split=config.train_split, valid_split=config.valid_split
     )
 
     model = cVAE(x_dim=x_dim, c_dim=c_dim, z_dim=config.z_dim)
@@ -22,7 +20,7 @@ def main():
         train_dataset,
         valid_dataset,
         n_epochs=config.n_epochs,
-        batch_size=config.batch_size
+        batch_size=config.batch_size,
     )
 
     trainer.save_checkpoint(config.model_save_path)
@@ -32,7 +30,7 @@ def main():
         adata,
         device=config.device,
         drugs=config.viz_drugs,
-        save_path=config.latent_space_path
+        save_path=config.latent_space_path,
     )
 
 

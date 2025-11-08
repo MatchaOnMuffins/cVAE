@@ -10,16 +10,18 @@ class TrainingConfig:
     z_dim: int = 32
     n_epochs: int = 30
     batch_size: int = 128
+    encoder_hidden_dims: list[int] = [512, 256]
+    decoder_hidden_dims: list[int] = [256, 512]
     learning_rate: float = 1e-4
     device: str = "cuda" if torch.cuda.is_available() else "cpu"
-    model_save_path: str = "./scVAE_model"
+    model_save_path: str = "./checkpoints"
     loss_curve_path: str = "training_curves.png"
     latent_space_path: str = "latent_space.png"
-    viz_drugs: list = None
+    viz_drugs: list | None = None
 
     def __post_init__(self):
         if self.viz_drugs is None:
-            self.viz_drugs = ['DMSO_TF', 'Quinestrol']
+            self.viz_drugs = ["DMSO_TF", "Quinestrol"]
 
 
 def get_config():
