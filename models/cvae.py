@@ -75,5 +75,7 @@ class cVAE(nn.Module):
         os.makedirs(model_path, exist_ok=True)
         torch.save(self.state_dict(), os.path.join(model_path, "model_params.pt"))
 
-    def load(self, checkpoint_path, device='cpu'):
+    def load(self, checkpoint_path, device=None):
+        if device is None:
+            device = 'cuda' if torch.cuda.is_available() else 'cpu'
         self.load_state_dict(torch.load(checkpoint_path, map_location=device, weights_only=True))
