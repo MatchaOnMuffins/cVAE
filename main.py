@@ -13,7 +13,15 @@ def main():
         adata, train_split=config.train_split, valid_split=config.valid_split
     )
 
-    model = cVAE(x_dim=x_dim, c_dim=c_dim, z_dim=config.z_dim)
+    model = cVAE(
+        x_dim=x_dim,
+        c_dim=c_dim,
+        z_dim=config.z_dim,
+        encoder_hidden_dims=config.encoder_hidden_dims,
+        decoder_hidden_dims=config.decoder_hidden_dims,
+        dropout=config.dropout,
+        negative_slope=config.negative_slope,
+    )
     trainer = Trainer(model, device=config.device, lr=config.learning_rate)
 
     train_losses, valid_losses = trainer.train(

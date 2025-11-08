@@ -12,6 +12,8 @@ class TrainingConfig:
     batch_size: int = 128
     encoder_hidden_dims: list[int] = [512, 256]
     decoder_hidden_dims: list[int] = [256, 512]
+    dropout: float = 0.2
+    negative_slope: float = 0.2
     learning_rate: float = 1e-4
     device: str = "cuda" if torch.cuda.is_available() else "cpu"
     model_save_path: str = "./checkpoints"
