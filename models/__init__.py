@@ -1,3 +1,3 @@
-from .scvae import scVAE
+from .cvae import cVAE
 
-__all__ = ['scVAE']
+__all__ = ['cVAE']

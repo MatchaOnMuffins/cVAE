@@ -41,7 +41,7 @@ def plot_latent_space(model, adata, device='cuda', drugs=None, save_path=None):
     C = torch.tensor(C, dtype=torch.float32).to(device)
 
     with torch.no_grad():
-        z_mu, z_logvar = model.encode(X, C)
+        z_mu, z_logvar = model.encoder(X, C)
         z = model.reparameterize(z_mu, z_logvar).cpu().numpy()
 
     reducer = umap.UMAP(n_neighbors=30, min_dist=0.3, metric='cosine', random_state=42)

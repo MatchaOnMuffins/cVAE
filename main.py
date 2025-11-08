@@ -1,4 +1,4 @@
-from models import scVAE
+from models import cVAE
 from data import load_data, prepare_datasets
 from training import Trainer
 from visualization import plot_training_curves, plot_latent_space
@@ -15,7 +15,7 @@ def main():
         valid_split=config.valid_split
     )
 
-    model = scVAE(x_dim=x_dim, c_dim=c_dim, z_dim=config.z_dim)
+    model = cVAE(x_dim=x_dim, c_dim=c_dim, z_dim=config.z_dim)
     trainer = Trainer(model, device=config.device, lr=config.learning_rate)
 
     train_losses, valid_losses = trainer.train(
