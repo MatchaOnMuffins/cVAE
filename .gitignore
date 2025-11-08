@@ -39,8 +39,6 @@ ENV/
 *~
 
 *.h5
-*.h5ad
-*.h5ad.gz
 *.png
 *.jpg
 *.jpeg

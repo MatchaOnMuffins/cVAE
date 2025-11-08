@@ -4,7 +4,7 @@ from dataclasses import dataclass
 
 @dataclass
 class TrainingConfig:
-    data_path: str = "HW5.h5ad.gz"
+    data_path: str = "data/raw/dataset.h5ad"
     train_split: str = "train"
     valid_split: str = "valid"
     z_dim: int = 32
